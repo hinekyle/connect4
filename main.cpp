@@ -12,17 +12,8 @@ int WIN = 0;
 int TURN = 1;
 char PLAYER = 'Y';
 int COLUMN;
-vector<char> start(MAX, '#');
-vector<char> last(MAX, '#');
 vector<char> space(MAX, ' ');
 vector< vector<char> > board(7, vector<char>(9, ' '));
-vector<char> A(MAX, ' ');
-vector<char> B(MAX, ' ');
-vector<char> C(MAX, ' ');
-vector<char> D(MAX, ' ');
-vector<char> E(MAX, ' ');
-vector<char> F(MAX, ' ');
-vector<char> G(MAX, ' ');
 
 void Menu()
 {
@@ -77,111 +68,10 @@ int insertChip(int column, char player) {
 void win_condition()
 {
 	// VERTICALLY
-	if( A[5] != ' ' && A[5] == A[4] && A[3] == A[2] && A[5] == A[2] )
-		WIN = 1;
-	else if( A[4] != ' ' && A[4] == A[3] && A[2] == A[1] && A[4] == A[1] )
-		WIN = 1;
-	else if( A[3] != ' ' && A[3] == A[2] && A[1] == A[0] && A[3] == A[0] )
-		WIN = 1;
-	else if( B[5] != ' ' && B[5] == B[4] && B[3] == B[2] && B[5] == B[2] )
-		WIN = 1;
-	else if( B[4] != ' ' && B[4] == B[3] && B[2] == B[1] && B[4] == B[1] )
-		WIN = 1;
-	else if( B[3] != ' ' && B[3] == B[2] && B[1] == B[0] && B[3] == B[0] )
-		WIN = 1;
-	else if( C[5] != ' ' && C[5] == C[4] && C[3] == C[2] && C[5] == C[2] )
-		WIN = 1;
-	else if( C[4] != ' ' && C[4] == C[3] && C[2] == C[1] && C[4] == C[1] )
-		WIN = 1;
-	else if( C[3] != ' ' && C[3] == C[2] && C[1] == C[0] && C[3] == C[0] )
-		WIN = 1;
-	else if( D[5] != ' ' && D[5] == D[4] && D[3] == D[2] && D[5] == D[2] )
-		WIN = 1;
-	else if( D[4] != ' ' && D[4] == D[3] && D[2] == D[1] && D[4] == D[1] )
-		WIN = 1;
-	else if( D[3] != ' ' && D[3] == D[2] && D[1] == D[0] && D[3] == D[0] )
-		WIN = 1;
-	else if( E[5] != ' ' && E[5] == E[4] && E[3] == E[2] && E[5] == E[2] )
-		WIN = 1;
-	else if( E[4] != ' ' && E[4] == E[3] && E[2] == E[1] && E[4] == E[1] )
-		WIN = 1;
-	else if( E[3] != ' ' && E[3] == E[2] && E[1] == E[0] && E[3] == E[0] )
-		WIN = 1;
-	else if( F[5] != ' ' && F[5] == F[4] && F[3] == F[2] && F[5] == F[2] )
-		WIN = 1;
-	else if( F[4] != ' ' && F[4] == F[3] && F[2] == F[1] && F[4] == F[1] )
-		WIN = 1;
-	else if( F[3] != ' ' && F[3] == F[2] && F[1] == F[0] && F[3] == F[0] )
-		WIN = 1;
-	else if( G[5] != ' ' && G[5] == G[4] && G[3] == G[2] && G[5] == G[2] )
-		WIN = 1;
-	else if( G[4] != ' ' && G[4] == G[3] && G[2] == G[1] && G[4] == G[1] )
-		WIN = 1;
-	else if( G[3] != ' ' && G[3] == G[2] && G[1] == G[0] && G[3] == G[0] )
-		WIN = 1;
 
 	//HORIZONTALLY
-	for(int M = 0; M < 6; M++)
-	{
-		if( A[M] != ' ' && A[M] == B[M] && C[M] == D[M] && A[M] == D[M] )
-			WIN = 1;
-		else if( B[M] != ' ' && B[M] == C[M] && D[M] == E[M] && B[M] == E[M] )
-			WIN = 1;
-		else if( C[M] != ' ' && C[M] == D[M] && E[M] == F[M] && C[M] == F[M] )
-			WIN = 1;
-		else if( D[M] != ' ' && D[M] == E[M] && F[M] == G[M] && D[M] == G[M] )
-			WIN = 1;
-	}
 
 	//DIAGONALLY
-	if( A[0] != ' ' && A[0] == B[1] && C[2] == D[3] && A[0] == D[3] )
-		WIN = 1;
-	else if( A[1] != ' ' && A[1] == B[2] && C[3] == D[4] && A[1] == D[4] )
-		WIN = 1;
-	else if( A[2] != ' ' && A[2] == B[3] && C[4] == D[5] && A[2] == D[5] )
-		WIN = 1;
-	else if( B[0] != ' ' && B[0] == C[1] && D[2] == E[3] && B[0] == E[3] )
-	        WIN = 1;	
-	else if( B[1] != ' ' && B[1] == C[2] && D[3] == E[4] && B[1] == E[4] )
-		WIN = 1;
-	else if( B[2] != ' ' && B[2] == C[3] && D[4] == E[5] && B[2] == E[5] )
-		WIN = 1;
-	else if( C[0] != ' ' && C[0] == D[1] && E[2] == F[3] && C[0] == F[3] )
-	        WIN = 1;	
-	else if( C[1] != ' ' && C[1] == D[2] && E[3] == F[4] && C[1] == F[4] )
-		WIN = 1;
-	else if( C[2] != ' ' && C[2] == D[3] && E[4] == F[5] && C[2] == F[5] )
-		WIN = 1;
-	else if( D[0] != ' ' && D[0] == E[1] && F[2] == G[3] && D[0] == G[3] )
-	        WIN = 1;	
-	else if( D[1] != ' ' && D[1] == E[2] && F[3] == G[4] && D[1] == G[4] )
-		WIN = 1;
-	else if( D[2] != ' ' && D[2] == E[3] && F[4] == G[5] && D[2] == G[5] )
-		WIN = 1;
-	else if( D[0] != ' ' && D[0] == C[1] && B[2] == A[3] && D[0] == A[3] )
-	        WIN = 1;	
-	else if( D[1] != ' ' && D[1] == C[2] && B[3] == A[4] && D[1] == A[4] )
-		WIN = 1;
-	else if( D[2] != ' ' && D[2] == C[3] && B[4] == A[5] && D[2] == A[5] )
-		WIN = 1;
-	else if( E[0] != ' ' && E[0] == D[1] && C[2] == B[3] && E[0] == B[3] )
-	        WIN = 1;	
-	else if( E[1] != ' ' && E[1] == D[2] && C[3] == B[4] && E[1] == B[4] )
-		WIN = 1;
-	else if( E[2] != ' ' && E[2] == D[3] && C[4] == B[5] && E[2] == B[5] )
-		WIN = 1;
-	else if( F[0] != ' ' && F[0] == E[1] && D[2] == C[3] && F[0] == C[3] )
-	        WIN = 1;	
-	else if( F[1] != ' ' && F[1] == E[2] && D[3] == C[4] && F[1] == C[4] )
-		WIN = 1;
-	else if( F[2] != ' ' && F[2] == E[3] && D[4] == C[5] && F[2] == C[5] )
-		WIN = 1;
-	else if( G[0] != ' ' && G[0] == F[1] && E[2] == D[3] && G[0] == D[3] )
-	        WIN = 1;	
-	else if( G[1] != ' ' && G[1] == F[2] && E[3] == D[4] && G[1] == D[4] )
-		WIN = 1;
-	else if( G[2] != ' ' && G[2] == F[3] && E[4] == D[5] && G[2] == D[5] )
-		WIN = 1;
 }
 
 int main()
