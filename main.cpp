@@ -1,10 +1,7 @@
 //------------------------------------------------------------------------------
+// Program: Connect Four Game
 // Author:  Kyle Hine
 //------------------------------------------------------------------------------
-
-//##############################################################################
-// Program: Connect Four Game 
-//##############################################################################
 
 using namespace std;
 #include <iostream>
@@ -18,6 +15,7 @@ char COLUMN;
 vector<char> start(MAX, '#');
 vector<char> last(MAX, '#');
 vector<char> space(MAX, ' ');
+vector< vector<char> > board(7, vector<char>(9, ' '));
 vector<char> A(MAX, ' ');
 vector<char> B(MAX, ' ');
 vector<char> C(MAX, ' ');
@@ -36,41 +34,31 @@ void Menu()
 
 void display()
 {
-	
 	cout << endl << "CONNECT FOUR GAME" << endl;
-	cout << endl << ' ' << ' ' << 'A' << ' ' << ' ' << 'B' << ' ' << ' ';
-        cout << 'C' << ' ' << ' ' << 'D' << ' ' << ' ';
-        cout << 'E' << ' ' << ' ' << 'F' << ' ' << ' ';
-        cout << 'G' << ' ' << endl;
+	cout << endl << ' ' << ' ' << '1' << ' ' << ' ' << '2' << ' ' << ' ';
+        cout << '3' << ' ' << ' ' << '4' << ' ' << ' ';
+        cout << '5' << ' ' << ' ' << '6' << ' ' << ' ';
+        cout << '7' << ' ' << endl;
 
-	A[6] = '#';
-	B[6] = '#';
-	C[6] = '#';
-	D[6] = '#';
-	E[6] = '#';
-	F[6] = '#';
-	G[6] = '#';
-	space[6] = '#';
-
-	for(unsigned Q=0; Q < MAX; Q++)
-	{
-		cout << start[Q];
-		cout << space[Q];
-		cout << A[Q];
-		cout << space[Q] << space[Q];
-		cout << B[Q];
-	        cout << space[Q] << space[Q];
-		cout << C[Q];
-		cout << space[Q] << space[Q];
-		cout << D[Q];
-		cout << space[Q] << space[Q];
-		cout << E[Q];
-		cout << space[Q] << space[Q];
-		cout << F[Q];
-		cout << space[Q] << space[Q];
-		cout << G[Q];
-		cout << space[Q];
-		cout << last[Q] << endl;
+	for (int i=0; i<7; i++) {
+		board[i][0] = '#'; // left side
+		board[i][8] = '#'; // right side
+		for (int j=0; j<9; j++) {
+			board[6][j] = '#'; // bottom row
+			if (j==0 || j==7) {
+				cout << board[i][j];
+				cout << space[i];
+			}
+			else if (j==8) {
+				cout << board[i][j];
+			}
+			else {
+				cout << board[i][j];
+				cout << space[i];
+				cout << space[i];
+			}
+		}
+		cout << endl;
 	}
 }
 
@@ -186,6 +174,7 @@ void win_condition()
 
 int main()
 {
+	space[6] = '#';
 	int FIN = 0;
 	display();
 	Menu();
