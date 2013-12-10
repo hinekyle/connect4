@@ -11,7 +11,7 @@ const int MAX = 7;
 int WIN = 0;
 int TURN = 1;
 char PLAYER = 'Y';
-char COLUMN;
+int COLUMN;
 vector<char> start(MAX, '#');
 vector<char> last(MAX, '#');
 vector<char> space(MAX, ' ');
@@ -60,6 +60,18 @@ void display()
 		}
 		cout << endl;
 	}
+}
+
+int insertChip(int column, char player) {
+	cout << column << endl;
+	for (int i=6; i>0; i--) {
+		cout << i << endl;
+		if (board[i][column] == ' ') {
+			board[i][column] = player;
+			return 0;
+		}
+	}
+	return 1;
 }
 
 void win_condition()
@@ -200,131 +212,56 @@ int main()
 
 		switch(COLUMN)
 		{
-			case 'A':
-			case 'a':
-				if(A[0] == 'W' || A[0] == 'Z')
+			case 1:
+				if(insertChip(COLUMN,PLAYER) == 1)
 				{
 					cout << "This column is full, try a different column letter." << endl;
 				}
-				else
-				{
-					for(int X=5; X>=0; X--)
-					{
-						if(A[X] == ' ')
-						{
-							A[X] = PLAYER;
-							break;
-						}}}
 				display();
 				break;
-			case 'B':
-			case 'b':
-				if(B[0] == 'W' || B[0] == 'Z')
+			case 2:
+				if(insertChip(COLUMN,PLAYER) == 1)
 				{
 					cout << "This column is full, try a different column letter." << endl;
 				}
-				else
-				{
-					for(int X=5; X>=0; X--)
-					{
-						if(B[X] == ' ')
-						{
-							B[X] = PLAYER;
-							break;
-						}}}
 				display();
 				break;
-			case 'C':
-			case 'c':
+			case 3:
+				if(insertChip(COLUMN,PLAYER) == 1)
+				{
+					cout << "This column is full, try a different column letter." << endl;
+				}
+				display();
+				break;
+			case 4:
+				if(insertChip(COLUMN,PLAYER) == 1)
+				{
+					cout << "This column is full, try a different column letter." << endl;
+				}
+				display();
+				break;
+			case 5:
+				if(insertChip(COLUMN,PLAYER) == 1)
+				{
+					cout << "This column is full, try a different column letter." << endl;
+				}
+				display();
+				break;
+			case 6:
+				if(insertChip(COLUMN,PLAYER) == 1)
+				{
+					cout << "This column is full, try a different column letter." << endl;
+				}
+				display();
+				break;
+			case 7:
 
-				if(C[0] == 'W' || C[0] == 'Z')
+				if(insertChip(COLUMN,PLAYER) == 1)
 				{
 					cout << "This column is full, try a different column letter." << endl;
 				}
-				else
-				{
-					for(int X=5; X>=0; X--)
-					{
-						if(C[X] == ' ')
-						{
-							C[X] = PLAYER;
-							break;
-						}}}
-				display();
 				break;
-			case 'D':
-			case 'd':
-				if(D[0] == 'W' || D[0] == 'Z')
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
-				else
-				{
-					for(int X=5; X>=0; X--)
-					{
-						if(D[X] == ' ')
-						{
-							D[X] = PLAYER;
-							break;
-						}}}
-				display();
-				break;
-			case 'E':
-			case 'e':
-
-				if(E[0] == 'W' || E[0] == 'Z')
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
-				else
-				{
-					for(int X=5; X>=0; X--)
-					{
-						if(E[X] == ' ')
-						{
-							E[X] = PLAYER;
-							break;
-						}}}
-				display();
-				break;
-			case 'F':
-			case 'f':
-
-				if(F[0] == 'W' || F[0] == 'Z')
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
-				else
-				{
-					for(int X=5; X>=0; X--)
-					{
-						if(F[X] == ' ')
-						{
-							F[X] = PLAYER;
-							break;
-						}}}
-				display();
-				break;
-			case 'G':
-			case 'g':
-
-				if(G[0] == 'W' || G[0] == 'Z')
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
-				else
-				{
-					for(int X=5; X>=0; X--)
-					{
-						if(G[X] == ' ')
-						{
-							G[X] = PLAYER;
-							break;
-						}}}
-				display();
-				break;
-			case 'Q':
-			case 'q':
+			case 0:
 				FIN = 1;
 				cout << "thanks for playing!" << endl;
 				break;
