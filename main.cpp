@@ -64,23 +64,32 @@ int insertChip(int column, char player) {
 	return 1;
 }
 
-int checkVertical(int row, int column) {
-//	char chipCurr  = board[row][column];
-//	char chipUnder = board[row+1][column];
+// args: start position(row, column)
+// args: check direction(horzStep, vertStep)
+// returns 0 on success
+int checkWin(int row, int column, int horzStep, int vertStep) {
+	int innaRow = 0;
 
-//	if (chipBelow == (' ' || '#'))
-//		return 1;
-//	else {
-//		if (chipBelow == chipCurr)
-//			checkVertical(row+1, column);
-//	}
-	return 1;
-}
+	// type of chip at position
+	char player = board[row][column];
+	if (player == ' ' || player == '#') {
+		return 1;
+	}
+	char check  = ' ';
+	// check for 3 more 'W' or 'Z' chips
+	for (int i=0; i<3; i++) {
+		check = board[row +(i * horzStep)][column + (i * vertStep)];
+		if (check == ' ' || check == '#') {
+			return 1;
+		}
 
-int checkHorizontal() {
-}
-
-int checkDiagonal() {
+		if (player == check) {
+			innaRow++;
+			if (innaRow > 3) {
+				return 0; // Connect 4
+			}
+		}
+	}
 }
 
 void win_condition()
