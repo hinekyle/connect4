@@ -1,4 +1,4 @@
 connect4
 ========
 
-players alternate placing chips in vertical slots, the first player to get 4 chips in a row wins
+Played on the command-line, using the number keys.  Players alternate placing chips in vertical slots, the first player to get 4 chips in a row in any direction, wins
