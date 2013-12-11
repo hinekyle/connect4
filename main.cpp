@@ -54,15 +54,33 @@ void display()
 }
 
 int insertChip(int column, char player) {
-	cout << column << endl;
-	for (int i=6; i>0; i--) {
-		cout << i << endl;
+	for (int i=6; i>=0; i--) {
 		if (board[i][column] == ' ') {
 			board[i][column] = player;
 			return 0;
 		}
 	}
+	cout << "This column is full, try a different column letter." << endl;
 	return 1;
+}
+
+int checkVertical(int row, int column) {
+//	char chipCurr  = board[row][column];
+//	char chipUnder = board[row+1][column];
+
+//	if (chipBelow == (' ' || '#'))
+//		return 1;
+//	else {
+//		if (chipBelow == chipCurr)
+//			checkVertical(row+1, column);
+//	}
+	return 1;
+}
+
+int checkHorizontal() {
+}
+
+int checkDiagonal() {
 }
 
 void win_condition()
@@ -103,53 +121,32 @@ int main()
 		switch(COLUMN)
 		{
 			case 1:
-				if(insertChip(COLUMN,PLAYER) == 1)
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
+				insertChip(COLUMN,PLAYER);
 				display();
 				break;
 			case 2:
-				if(insertChip(COLUMN,PLAYER) == 1)
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
+				insertChip(COLUMN,PLAYER);
 				display();
 				break;
 			case 3:
-				if(insertChip(COLUMN,PLAYER) == 1)
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
+				insertChip(COLUMN,PLAYER); 
 				display();
 				break;
 			case 4:
-				if(insertChip(COLUMN,PLAYER) == 1)
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
+				insertChip(COLUMN,PLAYER);
 				display();
 				break;
 			case 5:
-				if(insertChip(COLUMN,PLAYER) == 1)
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
+				insertChip(COLUMN,PLAYER);
 				display();
 				break;
 			case 6:
-				if(insertChip(COLUMN,PLAYER) == 1)
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
+				insertChip(COLUMN,PLAYER); 
 				display();
 				break;
 			case 7:
-
-				if(insertChip(COLUMN,PLAYER) == 1)
-				{
-					cout << "This column is full, try a different column letter." << endl;
-				}
+				insertChip(COLUMN,PLAYER);
+				display();
 				break;
 			case 0:
 				FIN = 1;
