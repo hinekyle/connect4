@@ -77,7 +77,7 @@ int checkWin(int row, int column, int horzStep, int vertStep) {
 	}
 	char check  = ' ';
 	// check for 3 more 'W' or 'Z' chips
-	for (int i=0; i<3; i++) {
+	for (int i=0; i<4; i++) {
 		check = board[row +(i * horzStep)][column + (i * vertStep)];
 		if (check == ' ' || check == '#') {
 			return 1;
@@ -85,20 +85,35 @@ int checkWin(int row, int column, int horzStep, int vertStep) {
 
 		if (player == check) {
 			innaRow++;
-			if (innaRow > 3) {
-				return 0; // Connect 4
-			}
+//			cout << "player: " << player << " + check: " << check << " innaRow: " << innaRow<< endl;
 		}
+	}
+
+	if (innaRow > 3) {
+		return 0; // Connect 4
 	}
 }
 
 void win_condition()
 {
-	// VERTICALLY
+	for (int i=0; i<6; i++) { // six rows
+		for (int j=0; j<9; j++) { // nine columns
+			// VERTICAL
+			if (!checkWin(i,j,0,1)) {
+				WIN=1;
+			}
 
-	//HORIZONTALLY
-
-	//DIAGONALLY
+			// HORIZONTAL
+//			if (!checkWin(i,j,1,0)) {
+//				WIN=1;
+//			}
+			
+			// DIAGONAL
+//			if (!checkWin(i,j,1,1)) {
+//				WIN=1;
+//			}
+		}
+	}
 }
 
 int main()
@@ -109,7 +124,9 @@ int main()
 	Menu();
        	do
 	{
-		win_condition();
+//		if(TURN > 4) {  // in reality it should be 8, but lowered for testing purposes
+			win_condition();
+//		}
 		if(WIN == 1)
 		{
 			cout << "WINNER GAME OVER!" << endl;
