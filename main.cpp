@@ -7,7 +7,9 @@ using namespace std;
 #include <iostream>
 #include <vector>
 
+const int ROWS = 7;
 const int MAX = 7;
+const int COLS = 9;
 int WIN = 0;
 int TURN = 1;
 char PLAYER = 'Y';
@@ -26,10 +28,8 @@ void Menu()
 void display()
 {
 	cout << endl << "CONNECT FOUR GAME" << endl;
-	cout << endl << ' ' << ' ' << '1' << ' ' << ' ' << '2' << ' ' << ' ';
-        cout << '3' << ' ' << ' ' << '4' << ' ' << ' ';
-        cout << '5' << ' ' << ' ' << '6' << ' ' << ' ';
-        cout << '7' << ' ' << endl;
+	cout << endl << "  1 " << " 2 " << " 3 " << " 4 ";
+        cout << " 5 " << " 6 " << " 7 " << endl;
 
 	for (int i=0; i<7; i++) {
 		board[i][0] = '#'; // left side
@@ -83,9 +83,12 @@ int checkWin(int row, int column, int horzStep, int vertStep) {
 			return 1;
 		}
 
+		if (player != check) {
+			return 1;
+		}
+		
 		if (player == check) {
 			innaRow++;
-//			cout << "player: " << player << " + check: " << check << " innaRow: " << innaRow<< endl;
 		}
 	}
 
@@ -104,14 +107,14 @@ void win_condition()
 			}
 
 			// HORIZONTAL
-//			if (!checkWin(i,j,1,0)) {
-//				WIN=1;
-//			}
+			if (!checkWin(i,j,1,0)) {
+				WIN=1;
+			}
 			
 			// DIAGONAL
-//			if (!checkWin(i,j,1,1)) {
-//				WIN=1;
-//			}
+			if (!checkWin(i,j,1,1)) {
+				WIN=1;
+			}
 		}
 	}
 }
@@ -183,4 +186,3 @@ int main()
 	}
 while(!FIN && !WIN);
 }
-
